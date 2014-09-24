@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'thin'
 gem "bcrypt-ruby", require: "bcrypt"
+gem "font-awesome-rails"
 
 group :development do
   gem 'better_errors'

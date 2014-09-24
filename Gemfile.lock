@@ -72,6 +72,8 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.4)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.6.11)
     interception (0.5)
@@ -214,6 +216,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   faker
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   launchy
