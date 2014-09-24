@@ -8,20 +8,20 @@ describe Api::V1::NotesController do
     context 'validating' do
       it 'should validate id' do
         get :show, {note:{password: 'secret'}}
-        expect(response.status).to eq '404'
+        expect(response.status).to eq '400'
         expect(response.body).to include('Password required')
       end
 
       it 'should validate missing password' do  
         get :show, {note:{id: @note.id}}
-        expect(response.status).to eq '404'
+        expect(response.status).to eq '400'
         expect(response.body).to include('Id required')
       end
 
       it 'should vaidate bad password' do
         get :show, {note:{id:@note.id, password: 'wrongsecret'}}
 
-        expect(response.status).to eq '401'
+        expect(response.status).to eq '400'
       end
     end
 
@@ -56,8 +56,8 @@ describe Api::V1::NotesController do
         post :create, {note:{}}
       end
 
-      it 'should give me a 404' do
-        expect(response.code). to eq '404'
+      it 'should give me a 400' do
+        expect(response.code). to eq '400'
       end
 
       it 'should tell me whats wrong' do
