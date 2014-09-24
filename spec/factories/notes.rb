@@ -2,9 +2,8 @@
 
 FactoryGirl.define do
   factory :note do
-    encrypted_title "MyString"
-    encrypted_body "MyString"
-    password_hash "MyString"
-    password_salt "MyString"
+    password 'secret'
+    title 'some title'
+    body 'some body'    
   end
 end

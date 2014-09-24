@@ -4,13 +4,38 @@
 #   So I can learn more about the website
 feature 'Home page' do
 
-  # Scenario: Visit the home page
-  #   Given I am a visitor
-  #   When I visit the home page
-  #   Then I see "Welcome"
-  scenario 'visit the home page' do
-    visit root_path
-    expect(page).to have_content 'Welcome'
+  describe 'create note' do
+    before do
+      visit '/'
+
+      fill_in :note_title, with: 'some title'
+      fill_in :note_body, with: 'some body'
+      fill_in :note_password, with: 'some password'
+
+      click_on 'Create note'
+    end    
+
+    it 'should create a new note' do
+      expect(Note.count).to eq 1
+    end
+  end
+
+  describe 'show note', js:true do
+    before do
+      @note = FactoryGirl.create :note
+      
+      visit '/'
+
+      fill_in :id, with: @note.id
+      find('#password').set('secret')
+
+      click_on 'Show note'
+    end
+
+    it 'should return note' do
+      expect(page).to have_text 'some title'
+    end
+    
   end
 
 end
