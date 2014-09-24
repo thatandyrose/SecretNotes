@@ -15,6 +15,7 @@ gem 'slim-rails'
 gem 'thin'
 gem "bcrypt-ruby", require: "bcrypt"
 gem "font-awesome-rails"
+gem 'attr_encrypted'
 
 group :development do
   gem 'better_errors'

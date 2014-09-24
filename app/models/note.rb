@@ -1,5 +1,8 @@
 class Note < ActiveRecord::Base
   attr_accessor :password
+
+  attr_encrypted :title, :body, key: proc { |note| note.password }
+
   before_save :encrypt_password
 
   validates_presence_of :password, message: 'Password required', on: :create
@@ -8,11 +11,12 @@ class Note < ActiveRecord::Base
     note = find id
     
     if note && note.password_hash == BCrypt::Engine.hash_secret(password, note.password_salt)
+      note.password = password
       note
     else
       nil
     end
-    
+
   end
   
   private

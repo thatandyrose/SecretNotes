@@ -1,5 +1,7 @@
 h2 Create
 = form_for [:api, :v1, Note.new] do |f|
+  = f.text_field :title, class: 'form-control', placeholder: 'title'
+  = f.text_area :body, class: 'form-control', placeholder: 'body'
   = f.password_field :password, class: 'form-control', placeholder: 'password'
   = f.submit 'Create note', class: 'btn btn-primary btn-lg'
 
