@@ -13,6 +13,8 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'thin'
+gem "bcrypt-ruby", require: "bcrypt"
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

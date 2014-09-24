@@ -61,8 +61,6 @@ describe Api::V1::NotesController do
       end
 
       it 'should tell me whats wrong' do
-        expect(response.body).to include('Title required')
-        expect(response.body).to include('Body required')
         expect(response.body).to include('Password required')
       end
     end
