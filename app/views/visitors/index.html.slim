@@ -1,0 +1,10 @@
+h2 Create
+= form_for [:api, :v1, Note.new] do |f|
+  = f.password_field :password, class: 'form-control', placeholder: 'password'
+  = f.submit 'Create note', class: 'btn btn-primary btn-lg'
+
+h2 Show
+= form_tag '/api/v1/notes', method: 'GET', class:'show-note-form' do
+  = text_field_tag :id, '', class: 'form-control', placeholder: 'id'
+  = password_field_tag :password, '', class: 'form-control', placeholder: 'password'
+  = submit_tag 'Show note', class: 'btn btn-primary btn-lg'

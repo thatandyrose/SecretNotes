@@ -3,7 +3,8 @@ module Api
   module V1
 
     class NotesController < ApplicationController
-  
+     respond_to :json
+
       def show
         @note = Note.authenticate(params[:id], params.require(:password))
         
@@ -18,10 +19,10 @@ module Api
         if @note.save
           render :show
         else
-          render json: @note.errors, status: :bad_request
+          render json: {errors: @note.errors}, status: :bad_request
         end
       end
-      
+
     end
 
   end
