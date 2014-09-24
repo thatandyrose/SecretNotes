@@ -1,11 +1,17 @@
-h2 Create
+.center
+  .brand: i.fa.fa-key
+  h1 secretnotes.io
+  p API for storing notes...secretly
+
+h2 API endpoints
+h3 Create
 = form_for [:api, :v1, Note.new] do |f|
   = f.text_field :title, class: 'form-control', placeholder: 'title'
   = f.text_area :body, class: 'form-control', placeholder: 'body'
   = f.password_field :password, class: 'form-control', placeholder: 'password'
   = f.submit 'Create note', class: 'btn btn-primary btn-lg'
 
-h2 Show
+h3 Show
 = form_tag '/api/v1/notes', method: 'GET', class:'show-note-form' do
   = text_field_tag :id, '', class: 'form-control', placeholder: 'id'
   = password_field_tag :password, '', class: 'form-control', placeholder: 'password'

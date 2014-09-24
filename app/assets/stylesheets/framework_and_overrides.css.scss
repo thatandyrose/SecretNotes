@@ -41,8 +41,15 @@ main {
   }
 .jumbotron{
   background-color: transparent;
+  h1, p{
+    text-align: center
+  }
 }
 section {
   @extend .row;
   margin-top: 20px;
   }
+.brand{
+  font-size: 5em;
+  text-align: center
+}
