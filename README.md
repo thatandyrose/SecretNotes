@@ -1,48 +1,77 @@
-Secretnotes
-================
+# Secretnotes
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+## What you need to know
 
-Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
+- This is a Ruby on Rails application
+- This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+- It requires ruby 2.1.2
+- It requires rails 4.1.5
+- There is one test which requires the selenium driver, so the latest version of Firefox is required.
+- Data store is sqlite
+- It's tested with Rspec
 
-Problems? Issues?
------------
+## Great! But what is it?
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
+This is a simple API with two end points for CREATING and SHOWING Notes.
 
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
+Creating and Showing notes requires a password. Passwords are hash salted, and the content of the notes are encrypted with the password as the encryption key.
 
-If the application doesn’t work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+## Interesting. So if it's an API why is there a Javascript tests?
 
-Ruby on Rails
--------------
+I created a UI on the root of the app for interfacing with the API. There's some JS in there. Soz about that.
 
-This application requires:
+## Ahh, I see. Where's the documentation??
 
-- Ruby 2.1.2
-- Rails 4.1.5
+Glad you asked.
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+### Create
 
-Getting Started
----------------
+`post /api/v1/notes, {:password, :title, :body}`
 
-Documentation and Support
--------------------------
+*Required Parameters*
+- :password
 
-Issues
--------------
+*Example*
+`post /api/v1/notes, {password:'secret', title:'a title', body: 'a body'}`
 
-Similar Projects
-----------------
+*Response*
+```
+{
+  "id": 13,
+  "title": "a title",
+  "body": "a body"
+}
+```
 
-Contributing
-------------
+### Show
 
-Credits
--------
+`get /api/v1/:id, {:password}`
 
-License
--------
+*Required Parameters*
+- :id
+- :password
+
+*Example*
+`get /api/v1/notes/13, {password:'secret'}`
+
+*Response*
+```
+{
+  "id": 13,
+  "title": "a title",
+  "body": "a body"
+}
+```
+
+## Hmm, ok. So how do I get this running locally
+
+Make sure you've got all the requirements (see first section above).
+
+```
+$ bundle install
+$ rake db:migrate
+$ rspec
+$ rails s
+```
+
+Then browse to http://localhost:3000/
